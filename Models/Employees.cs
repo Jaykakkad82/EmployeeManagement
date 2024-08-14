@@ -73,12 +73,6 @@ namespace EmployeeManagement.Models
         [Precision(10,2)]
         public decimal Salary { get; set; } = 0.0M;
 
-        // Adding ForeignKey attribute to link ManagerId to another Employee's Id
-        [ForeignKey("Manager")]
-        public int? ManagerId { get; set; } = null;
-
-        // Navigation property to represent the manager
-        public virtual Employees Manager { get; set; }
 
         public bool IsActive { get; set; } = true;
 

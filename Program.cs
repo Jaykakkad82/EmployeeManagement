@@ -1,13 +1,26 @@
+
 using EmployeeManagement.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllers();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:3000") // Update this with your React app's URL if running locally
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
 
 builder.Services.AddDbContext<MyAppDbContext>(options =>
-{  var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
     options.UseSqlServer(connectionString);
 });
 
@@ -16,20 +29,25 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseExceptionHandler("/api/v1/error"); // Ensure this API endpoint is set up to handle errors
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
+app.UseStaticFiles();  // This serves static files from wwwroot by default
 
 app.UseRouting();
 
+app.UseCors("AllowReactApp");
+
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllers();
+
+// Serve the React app for all unknown routes
+app.MapFallbackToFile("/ReactApp/index.html"); // Ensure the correct path relative to wwwroot
 
 app.Run();
+
+
+
