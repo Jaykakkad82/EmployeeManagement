@@ -1,0 +1,22 @@
+.navbar {
+    background-color: rgb(49, 46, 46);
+    padding: 25px;
+  }
+  
+  .navbar a {
+    color: grey;
+    margin-right: 40px;
+    text-decoration: none;
+    font-size: 22px; /* Adjust this value to increase/decrease font size */
+  }
+  
+  .navbar a:last-child {
+    margin-right: 0;
+  }
+  
+  .navbar a.active-link {
+    color: white; /* Change this to the color you prefer for the active link */
+  }
+  
+  
+  
