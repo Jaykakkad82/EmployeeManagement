@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import './EmployeeForm.css'; // Import the CSS file
 
-function EmployeeForm() {
+function EmployeeFormOld() {
   const [employee, setEmployee] = useState({
     name: '',
     email: '',
@@ -30,7 +30,7 @@ function EmployeeForm() {
   // }, [id]);
   useEffect(() => {
     if (id) {
-      axios.get(`http://localhost:5238/api/v1/Employees/${id}`)
+      axios.get(`https://employeemanagement-2024-basiccrud-bjaqc3fdcvhhcugr.centralus-01.azurewebsites.net/api/v1/employees/${id}`)
         .then(response => {
           const employeeData = response.data;
           // Format dates to YYYY-MM-DD
@@ -81,8 +81,8 @@ function EmployeeForm() {
       setErrors(validationErrors);
     } else {
       const apiCall = id
-        ? axios.put(`http://localhost:5238/api/v1/Employees/${id}`, employee)
-        : axios.post('http://localhost:5238/api/v1/Employees', employee);
+        ? axios.put(`https://employeemanagement-2024-basiccrud-bjaqc3fdcvhhcugr.centralus-01.azurewebsites.net/api/v1/employees/${id}`, employee)
+        : axios.post('https://employeemanagement-2024-basiccrud-bjaqc3fdcvhhcugr.centralus-01.azurewebsites.net/api/v1/employees', employee);
   
       apiCall
         .then(() => {
@@ -221,4 +221,4 @@ function EmployeeForm() {
   );
 }
 
-export default EmployeeForm;
+export default EmployeeFormOld;

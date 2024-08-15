@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5238/api/v1/Employees'; // Update with your API endpoint
+// const url = "https://employeemanagement-2024-basiccrud-bjaqc3fdcvhhcugr.centralus-01.azurewebsites.net";
+const url = "http://localhost:5238";
+
+const API_URL = `${url}/api/v1/employees`;
 
 export const getEmployees = () => {
   return axios.get(API_URL);

@@ -6,8 +6,11 @@ function EmployeeDetails() {
   const [employee, setEmployee] = useState(null);
   const { id } = useParams();
 
+  // const url = "https://employeemanagement-2024-basiccrud-bjaqc3fdcvhhcugr.centralus-01.azurewebsites.net"
+  const url = "http://localhost:5238";
+
   useEffect(() => {
-    axios.get(`http://localhost:5238/api/v1/Employees/${id}`)
+    axios.get(`${url}/api/v1/employees/${id}`)
       .then(response => setEmployee(response.data))
       .catch(error => console.error(error));
   }, [id]);

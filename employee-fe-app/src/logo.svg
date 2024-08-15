@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="400px" height="150px">
+    <text x="20px" y="70px" fill="#2C3E50" font-size="50px" font-family="Arial" font-weight="bold">EMPLOYEE</text>
+    <text x="20px" y="120px" fill="#2C3E50" font-size="30px" font-family="Arial">MANAGEMENT</text>
+    <circle cx="330px" cy="60px" r="30px" fill="#E67E22" />
+    <circle cx="370px" cy="60px" r="30px" fill="#2C3E50" />
+    <circle cx="350px" cy="100px" r="30px" fill="#2C3E50" />
+</svg>

@@ -19,9 +19,13 @@ function EmployeeList() {
     { value: 5, label: "Unassigned" }
   ];
 
+  // const url = "https://employeemanagement-2024-basiccrud-bjaqc3fdcvhhcugr.centralus-01.azurewebsites.net"
+  const url = "http://localhost:5238";
+
+
   // Fetch all employees initially
   useEffect(() => {
-    axios.get('http://localhost:5238/api/v1/Employees')
+    axios.get(`${url}/api/v1/employees`)
       .then(response => {
         setEmployees(response.data);
       })
@@ -31,7 +35,7 @@ function EmployeeList() {
   useEffect(() => {
     // If no search term, fetch all employees
     if (!name && !email && !department) {
-      axios.get('http://localhost:5238/api/v1/Employees')
+      axios.get(`${url}/api/v1/employees`)
         .then(response => {
           setEmployees(response.data);
         })
@@ -52,7 +56,7 @@ function EmployeeList() {
         if (department) {
           params.append('department', department);
         }
-        const response = await axios.get(`http://localhost:5238/api/v1/Employees?${params.toString()}`);
+        const response = await axios.get(`${url}/api/v1/employees?${params.toString()}`);
         setEmployees(response.data);
       } catch (error) {
         console.error('Error searching employees:', error);
@@ -66,7 +70,7 @@ function EmployeeList() {
     const confirmDelete = window.confirm(`Are you sure you want to delete ${name}?`);
 
     if (confirmDelete) {
-      axios.delete(`http://localhost:5238/api/v1/Employees/${id}`)
+      axios.delete(`${url}/api/v1/employees/${id}`)
         .then(() => {
           setEmployees(prevEmployees => prevEmployees.filter(emp => emp.id !== id));
           console.log(`Employee ${name} with id: ${id} deleted successfully.`);

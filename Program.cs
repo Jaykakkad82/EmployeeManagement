@@ -1,72 +1,20 @@
-
-//using EmployeeManagement.Services;
-//using Microsoft.EntityFrameworkCore;
-
-//var builder = WebApplication.CreateBuilder(args);
-
-//// Add services to the container.
-//builder.Services.AddControllers();
-
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy("AllowReactApp",
-//        builder =>
-//        {
-//            builder.WithOrigins("https://employeemanagement-2024-basiccrud-bjaqc3fdcvhhcugr.centralus-01.azurewebsites.net") 
-//                   .AllowAnyHeader()
-//                   .AllowAnyMethod();
-//        });
-//});
-
-//builder.Services.AddDbContext<MyAppDbContext>(options =>
-//{
-//    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-//    options.UseSqlServer(connectionString);
-//});
-
-//var app = builder.Build();
-
-//// Configure the HTTP request pipeline.
-//if (!app.Environment.IsDevelopment())
-//{
-//    app.UseExceptionHandler("/api/v1/error"); // Ensure this API endpoint is set up to handle errors
-//    app.UseHsts();
-//}
-
-//app.UseHttpsRedirection();
-//app.UseStaticFiles();  // This serves static files from wwwroot by default
-
-//app.UseRouting();
-
-//app.UseCors("AllowReactApp");
-
-//app.UseAuthorization();
-
-//app.MapControllers();
-
-//// Serve the React app for all unknown routes
-//app.MapFallbackToFile("/ReactApp/index.html"); // Ensure the correct path relative to wwwroot
-
-//app.Run();
-
-
-
 using EmployeeManagement.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services.AddControllersWithViews();
 
+// Enable CORS for your React app
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowReactApp",
-        builder =>
+    options.AddPolicy("ReactAppPolicy",
+        policy =>
         {
-            builder.WithOrigins("http://localhost:3000") // Update this with your React app's URL if running locally
-                   .AllowAnyHeader()
-                   .AllowAnyMethod();
+            policy.WithOrigins("http://localhost:3000")  // Adjust the port if your React app runs on a different port
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
         });
 });
 
@@ -81,25 +29,23 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/api/v1/error"); // Ensure this API endpoint is set up to handle errors
+    app.UseExceptionHandler("/Home/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();  // This serves static files from wwwroot by default
+app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseCors("AllowReactApp");
+// Apply CORS middleware
+app.UseCors("ReactAppPolicy");
 
 app.UseAuthorization();
 
-app.MapControllers();
-
-// Serve the React app for all unknown routes
-app.MapFallbackToFile("/ReactApp/index.html"); // Ensure the correct path relative to wwwroot
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
-
-
-
