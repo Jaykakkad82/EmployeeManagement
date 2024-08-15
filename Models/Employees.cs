@@ -35,7 +35,7 @@ namespace EmployeeManagement.Models
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]         // ID is auto incremented
-        public int Id { get; set; }
+        public int Id { get; set; } // Make integer
 
 
         [Required]
