@@ -1,5 +1,5 @@
 ﻿# Employee Management System : Basic CRUD Operations Demmo
-![Architectue](Documentation\employee-mgm.drawio.png)
+![Architectue](Documentation/employee-mgm.drawio.png)
 
 ## Instructions to Run the App locally
 #### Step 1 : Set up the Database 
