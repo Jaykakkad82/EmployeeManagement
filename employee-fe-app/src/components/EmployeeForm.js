@@ -44,6 +44,7 @@ function EmployeeForm() {
       ...prevEmployee,
       [name]: type === 'checkbox' ? checked : 
               name === 'salary' ? parseFloat(value) : 
+              name === 'department' ? parseInt(value, 10) :
               value,
     }));
   };

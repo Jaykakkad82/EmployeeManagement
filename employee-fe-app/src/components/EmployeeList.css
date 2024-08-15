@@ -49,10 +49,20 @@
   }
   
   .add-btn {
-    background-color: #28a745;
+    background-color: #343a40;  /* Dark grey background */
     color: white;
     font-size: 14px;
-  }
+    padding: 8px 16px;
+    border: 2px solid #28a745;  /* Green outline */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.add-btn:hover {
+    background-color: #28a745;   /* Change background color on hover */
+    color: white;
+}
   
   .view-btn {
     background-color: #17a2b8;

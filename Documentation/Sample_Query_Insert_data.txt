@@ -1,4 +1,4 @@
-INSERT INTO Employees (Name, Email, DateOfBirth, Department, PhoneNumber, HireDate, Position, Salary, IsActive)
+INSERT INTO EmployeesTable (Name, Email, DateOfBirth, Department, PhoneNumber, HireDate, Position, Salary, IsActive)
 VALUES
 ('Sophia Walker', 'sophiaw@example.com', '1991-06-15', 1, '555-0111', '2024-01-10', 'Software Engineer', 75000.00, 1),
 ('Liam Davis', 'liamd@example.com', '1987-09-22', 0, '555-0112', '2023-11-05', 'HR Manager', 85000.00, 1),

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
+import './EmployeeDetails.css';  // Import the CSS file
 
 function EmployeeDetails() {
   const [employee, setEmployee] = useState(null);
   const { id } = useParams();
 
-  // const url = "https://employeemanagement-2024-basiccrud-bjaqc3fdcvhhcugr.centralus-01.azurewebsites.net"
   const url = "http://localhost:5238";
+   // const url = "https://employeemanagement-2024-basiccrud-bjaqc3fdcvhhcugr.centralus-01.azurewebsites.net"
 
   useEffect(() => {
     axios.get(`${url}/api/v1/employees/${id}`)
@@ -18,7 +19,7 @@ function EmployeeDetails() {
   if (!employee) return <div>Loading...</div>;
 
   return (
-    <div>
+    <div className="employee-details">
       <h2>{employee.name}</h2>
       <p>Email: {employee.email}</p>
       <p>Date of Birth: {new Date(employee.dateOfBirth).toLocaleDateString()}</p>
