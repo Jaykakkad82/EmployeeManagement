@@ -1,0 +1,254 @@
+{
+	"info": {
+		"_postman_id": "9eedec48-8f71-445c-9c9b-332008dd7a18",
+		"name": "EmployeeManagement_API_Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "740107"
+	},
+	"item": [
+		{
+			"name": "Local",
+			"item": [
+				{
+					"name": "GetAllActiveEmployees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5238/api/v1/employees"
+					},
+					"response": []
+				},
+				{
+					"name": "GetEmployeeByID_Valid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5238/api/v1/employees/1"
+					},
+					"response": []
+				},
+				{
+					"name": "GetEmployeeByID_InvalidID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5238/api/v1/employees/999"
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteEmployeeById_Valid",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5238/api/v1/employees/1"
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteEmployeeById_Invalid",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5238/api/v1/employees/109099"
+					},
+					"response": []
+				},
+				{
+					"name": "AddNewEmployee_Valid",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Jeff Dean1\",\r\n  \"email\": \"jeff1@example.com\",\r\n  \"dateOfBirth\": \"1985-05-15\",\r\n  \"department\": 2,//Finance\r\n  \"phoneNumber\": \"123\",\r\n  \"hireDate\": \"2021-03-01\",\r\n  \"position\": \"Manager\",\r\n  \"salary\": 35455,\r\n  \"isActive\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5238/api/v1/employees"
+					},
+					"response": []
+				},
+				{
+					"name": "AddNewEmployee_InvalidDepartment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Jeff Dean1\",\r\n  \"email\": \"jeff1@example.com\",\r\n  \"dateOfBirth\": \"1985-05-15\",\r\n  \"department\": 10,//Invalid\r\n  \"phoneNumber\": \"123\",\r\n  \"hireDate\": \"2021-03-01\",\r\n  \"position\": \"Manager\",\r\n  \"salary\": 35455,\r\n  \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5238/api/v1/employees"
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateEmployee_Valid",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 3004,\r\n    \"name\": \"Jeff Dean1\",\r\n    \"email\": \"jeff1@example.com\",\r\n    \"dateOfBirth\": \"1985-05-15T00:00:00\",\r\n    \"department\": 5,\r\n    \"phoneNumber\": \"123\",\r\n    \"hireDate\": \"2021-03-01T00:00:00\",\r\n    \"position\": \"Manager\",\r\n    \"salary\": 35455,\r\n    \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5238/api/v1/employees/3004"
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateEmployee_InvalidID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 7789,\r\n    \"name\": \"Jeff Dean1\",\r\n    \"email\": \"jeff1@example.com\",\r\n    \"dateOfBirth\": \"1985-05-15T00:00:00\",\r\n    \"department\": 3,\r\n    \"phoneNumber\": \"123\",\r\n    \"hireDate\": \"2021-03-01T00:00:00\",\r\n    \"position\": \"Manager\",\r\n    \"salary\": 35455,\r\n    \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5238/api/v1/employees/7789"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Azure",
+			"item": [
+				{
+					"name": "GetAllActiveEmployees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://employee-management-demo-evbgc5g0b8d7h2cw.eastus-01.azurewebsites.net/api/v1/employees"
+					},
+					"response": []
+				},
+				{
+					"name": "GetEmployeeByID_Valid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://employee-management-demo-evbgc5g0b8d7h2cw.eastus-01.azurewebsites.net/api/v1/employees/1"
+					},
+					"response": []
+				},
+				{
+					"name": "GetEmployeeByID_InvalidID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://employee-management-demo-evbgc5g0b8d7h2cw.eastus-01.azurewebsites.net/api/v1/employees/999"
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteEmployeeById_Valid",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "https://employee-management-demo-evbgc5g0b8d7h2cw.eastus-01.azurewebsites.net/api/v1/employees/1"
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteEmployeeById_Invalid",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "https://employee-management-demo-evbgc5g0b8d7h2cw.eastus-01.azurewebsites.net/api/v1/employees/109099"
+					},
+					"response": []
+				},
+				{
+					"name": "AddNewEmployee_Valid",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Jeff Dean1\",\r\n  \"email\": \"jeff1@example.com\",\r\n  \"dateOfBirth\": \"1985-05-15\",\r\n  \"department\": 2,//Finance\r\n  \"phoneNumber\": \"123\",\r\n  \"hireDate\": \"2021-03-01\",\r\n  \"position\": \"Manager\",\r\n  \"salary\": 35455,\r\n  \"isActive\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://employee-management-demo-evbgc5g0b8d7h2cw.eastus-01.azurewebsites.net/api/v1/employees"
+					},
+					"response": []
+				},
+				{
+					"name": "AddNewEmployee_InvalidDepartment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Jeff Dean1\",\r\n  \"email\": \"jeff1@example.com\",\r\n  \"dateOfBirth\": \"1985-05-15\",\r\n  \"department\": 10,//Invalid\r\n  \"phoneNumber\": \"123\",\r\n  \"hireDate\": \"2021-03-01\",\r\n  \"position\": \"Manager\",\r\n  \"salary\": 35455,\r\n  \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://employee-management-demo-evbgc5g0b8d7h2cw.eastus-01.azurewebsites.net/api/v1/employees"
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateEmployee_Valid",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 31,\r\n    \"name\": \"Jeff Dean1\",\r\n    \"email\": \"jeff1@example.com\",\r\n    \"dateOfBirth\": \"1985-05-15T00:00:00\",\r\n    \"department\": 5,\r\n    \"phoneNumber\": \"123\",\r\n    \"hireDate\": \"2021-03-01T00:00:00\",\r\n    \"position\": \"Manager\",\r\n    \"salary\": 35455,\r\n    \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://employee-management-demo-evbgc5g0b8d7h2cw.eastus-01.azurewebsites.net/api/v1/employees/31"
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateEmployee_InvalidID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 7789,\r\n    \"name\": \"Jeff Dean1\",\r\n    \"email\": \"jeff1@example.com\",\r\n    \"dateOfBirth\": \"1985-05-15T00:00:00\",\r\n    \"department\": 3,\r\n    \"phoneNumber\": \"123\",\r\n    \"hireDate\": \"2021-03-01T00:00:00\",\r\n    \"position\": \"Manager\",\r\n    \"salary\": 35455,\r\n    \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://employee-management-demo-evbgc5g0b8d7h2cw.eastus-01.azurewebsites.net/api/v1/employees/7789"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -26,7 +26,19 @@ namespace EmployeeManagement.Models
             else
                 return new ValidationResult("Date of birth must be in the past.");
         }
+
+        // Custom validation method for HireDate
+        public static ValidationResult ValidateHireDate(DateTime hireDate, ValidationContext context)
+        {
+            if (hireDate >= DateTime.Now)
+            {
+                return new ValidationResult("Hire Date must be a date in the past.");
+            }
+            return ValidationResult.Success;
+        }
     }
+
+
 
     public class Employees
     {
@@ -54,6 +66,7 @@ namespace EmployeeManagement.Models
         public DateTime DateOfBirth { get; set; }
 
         [Required]
+        [Range(0, 5, ErrorMessage = "Invalid Department")]
         public Department Department { get; set; } = Department.Unassigned;
 
 
@@ -64,6 +77,7 @@ namespace EmployeeManagement.Models
         public string PhoneNumber { get; set; } = "0000000000";
 
         [DataType(DataType.Date)]
+        [CustomValidation(typeof(EmployeeValidators), "ValidateHireDate")]
         public DateTime HireDate { get; set; }= DateTime.UtcNow;
 
         [MaxLength(100)]

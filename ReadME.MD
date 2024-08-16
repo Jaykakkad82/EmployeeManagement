@@ -1,5 +1,9 @@
-﻿# Employee Management System : Basic CRUD Operations Demmo
-![Architectue](Documentation/employee-mgm.drawio.png)
+﻿# Employee Management System : Basic CRUD Operations Demo
+## Azure Deployment Details
+### Access the frontend React.js application at : https://employee-management-frontend-gwcwfxcrbga9enak.eastus-01.azurewebsites.net
+### Access the ASP.NET web API service at : https://employee-management-demo-evbgc5g0b8d7h2cw.eastus-01.azurewebsites.net
+
+![Architecture: High Level Design](Documentation/employee-mgm.drawio.png)
 
 ## Instructions to Run the App locally
 #### Step 1 : Set up the Database 
@@ -30,3 +34,7 @@ I have used inMemory database to run the unit Test cases for basic CRUD operatio
 - Run Tests: Go to **Test** > **Test Explorer** in Visual Studio. Click on **Run All** to run all the tests in your solution.
 - Alternatively, you can right-click on individual test methods and select **Run**.	
 ![Unit Test Cases](Documentation/Test-explorer.png)
+
+## Testing using Postman
+- Download the collection **EmployeeManagement_API_Testing.postman_collection** 
+- Import this collection to postman from where you can test web API locally as well as the one deployed on Azure.

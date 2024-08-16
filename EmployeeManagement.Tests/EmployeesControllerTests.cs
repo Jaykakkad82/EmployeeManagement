@@ -88,7 +88,7 @@ public class EmployeesControllerTests
         var newEmployee = new Employees { Id = 3, Name = "Sam Wilson", Email = "sam@example.com", IsActive = true, Position = "Tester" };
 
         // Act
-        var result = await _controller.PostEmployee(newEmployee);
+        var result = await _controller.AddNewEmployee(newEmployee);
 
         // Assert
         var actionResult = Assert.IsType<ActionResult<Employees>>(result);
@@ -121,7 +121,7 @@ public class EmployeesControllerTests
         }
 
         // Act
-        var result = await _controller.PutEmployee(2, employeeToBeUpdated);
+        var result = await _controller.UpdateEmployee(2, employeeToBeUpdated);
 
         // Assert
         Assert.IsType<NoContentResult>(result);
@@ -142,7 +142,7 @@ public class EmployeesControllerTests
         var updatedEmployee = new Employees { Id = 2, Name = "Jane Smith Updated", Email = "jane_updated@example.com", IsActive = true, Position = "Lead Manager" };
 
         // Act
-        var result = await _controller.PutEmployee(1, updatedEmployee);
+        var result = await _controller.UpdateEmployee(1, updatedEmployee);
 
         // Assert
         Assert.IsType<BadRequestResult>(result);

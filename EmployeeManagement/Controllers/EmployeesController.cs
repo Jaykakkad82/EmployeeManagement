@@ -55,7 +55,8 @@ namespace EmployeeManagement.Controllers
 
             if (employee == null)
             {
-                return NotFound();
+                return NotFound(new { message = $"Employee with ID {id} not found" });
+                ;
             }
 
             return employee;
@@ -63,7 +64,7 @@ namespace EmployeeManagement.Controllers
 
         // POST: api/Employees
         [HttpPost]
-        public async Task<ActionResult<Employees>> PostEmployee(Employees employee)
+        public async Task<ActionResult<Employees>> AddNewEmployee(Employees employee)
         {
             _context.EmployeeTable.Add(employee);
             await _context.SaveChangesAsync();
@@ -73,11 +74,11 @@ namespace EmployeeManagement.Controllers
 
         // PUT: api/Employees/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmployee(int id, Employees employee)
+        public async Task<IActionResult> UpdateEmployee(int id, Employees employee)
         {
             if (id != employee.Id)
             {
-                return BadRequest();
+                return BadRequest(new { message = $"The given ID {id} does not match employee ID {employee.Id}" });
             }
 
             _context.Entry(employee).State = EntityState.Modified;
@@ -90,7 +91,7 @@ namespace EmployeeManagement.Controllers
             {
                 if (!_context.EmployeeTable.Any(e => e.Id == id))
                 {
-                    return NotFound();
+                    return NotFound(new { message = $"Unable to update Employee with ID {id}" });
                 }
                 else
                 {
@@ -108,7 +109,7 @@ namespace EmployeeManagement.Controllers
             var employee = await _context.EmployeeTable.FindAsync(id);
             if (employee == null)
             {
-                return NotFound();
+                return NotFound(new { message = $"Employee with ID {id} not found" });
             }
 
             _context.EmployeeTable.Remove(employee);
